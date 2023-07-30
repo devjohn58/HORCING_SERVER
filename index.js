@@ -1,33 +1,10 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 const { ethers } = require("ethers");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 //============SERVER CONFIG=================
 
-const whitelist = [
-	"http://localhost:5173",
-	"https://react-horse-racing.vercel.app/",
-];
-const corsOptions = {
-	origin: function (origin, callback) {
-		if (whitelist.indexOf(origin) !== -1) {
-			callback(null, true);
-		} else {
-			callback(new Error("Not allowed by CORS"));
-		}
-	},
-};
-
-// app.use(
-// 	cors({
-// 		origin: [
-// 			"http://localhost:5173",
-// 			"https://react-horse-racing.vercel.app/",
-// 		],
-// 	})
-// );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
