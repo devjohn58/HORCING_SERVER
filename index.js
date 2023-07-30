@@ -6,10 +6,6 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 //============SERVER CONFIG=================
 
-app.use(
-	cors({ origin: true })
-);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
