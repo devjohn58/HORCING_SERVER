@@ -7,7 +7,7 @@ require("dotenv").config();
 const ABIGAME = require("./abi")
 //============SERVER CONFIG=================
 
-const whitelist = ["http://localhost:3000"];
+const whitelist = ["http://localhost:5173", "https://react-horse-racing.vercel.app/"];
 const corsOptions = {
 	origin: function (origin, callback) {
 		if (whitelist.indexOf(origin) !== -1) {
@@ -18,7 +18,7 @@ const corsOptions = {
 	},
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
