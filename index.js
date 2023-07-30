@@ -90,7 +90,8 @@ app.use((req, res, next) => {
 		// The header should look like "Bearer <token>". We only need the token part.
 		const token = authHeader.split(" ")[1];
 		req.token = token;
-	}
+    }
+    res.header("Access-Control-Allow-Origin", "*");
 	next();
 });
 app.get("/", (req, res) => {
