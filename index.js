@@ -5,7 +5,7 @@ const { ethers } = require("ethers");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 //============SERVER CONFIG=================
-const allowedOrigins = ["horcing-server.vercel.app", "localhost://5173"];
+const allowedOrigins = ["react-horse-racing.vercel.app", "localhost://5173"];
 app.use(
 	cors({
 		origin: function (origin, callback) {
