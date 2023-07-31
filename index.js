@@ -8,7 +8,7 @@ require("dotenv").config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
+app.use(cors());
 // const provider = new ethers.JsonRpcProvider(
 //     "https://cloudflare-eth.com"
 const provider = new ethers.JsonRpcProvider(
@@ -89,19 +89,19 @@ app.use((req, res, next) => {
 	if (typeof authHeader !== "undefined") {
 		const token = authHeader.split(" ")[1];
 		req.token = token;
-    }
+	}
 	next();
 });
 app.get("/", (req, res) => {
 	res.json({ status: true });
 });
 app.post("/api/test", async (req, res) => {
-    if (!req.body) {
-        res.status(403).json({status: "false"})
-    } else {
-        res.status(200).json({status: "true"})
-    }
-})
+	if (!req.body) {
+		res.status(403).json({ status: "false" });
+	} else {
+		res.status(200).json({ status: "true" });
+	}
+});
 app.post("/api/getToken", async (req, res) => {
 	try {
 		if (!req.body) {
@@ -115,7 +115,7 @@ app.post("/api/getToken", async (req, res) => {
 });
 
 app.post("/api/deposit", async (req, res) => {
-    req.setTimeout(120000);
+	req.setTimeout(120000);
 	if (!req.token) {
 		return res.status(403).json({ error: "Not access!" });
 	}
@@ -130,18 +130,20 @@ app.post("/api/deposit", async (req, res) => {
 		if (!data.id || !data.txhash || !data.amount | !data.idDeposit) {
 			res.status(403);
 		}
-		const _tx = await provider.waitForTransaction(txhash);
-		if (_tx.status == 1) {
-			try {
-				await deposit(id, amount);
-				await confirmDeposit(idDeposit);
-				res.json({ status: true });
-			} catch (error) {
+		setTimeout(async () => {
+			const _tx = await provider.waitForTransaction(txhash);
+			if (_tx.status == 1) {
+				try {
+					await deposit(id, amount);
+					await confirmDeposit(idDeposit);
+					res.json({ status: true });
+				} catch (error) {
+					return res.status(404);
+				}
+			} else {
 				return res.status(404);
 			}
-		} else {
-			return res.status(404);
-		}
+		}, 10000);
 	} catch (error) {
 		console.log("Error: ", error);
 		res.json(403);
