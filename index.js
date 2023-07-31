@@ -115,6 +115,7 @@ app.post("/api/getToken", async (req, res) => {
 });
 
 app.post("/api/deposit", async (req, res) => {
+    req.setTimeout(120000);
 	if (!req.token) {
 		return res.status(403).json({ error: "Not access!" });
 	}

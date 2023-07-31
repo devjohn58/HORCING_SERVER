@@ -1,4 +1,4 @@
-POST https://horcing-server.vercel.app/api/getToken
+POST https://horcing-server.vercel.app/api/test
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
@@ -8,4 +8,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 }
 ###
 
-POST https://horcing-server.vercel.app/api/test
+GET  216.238.76.105:3000
