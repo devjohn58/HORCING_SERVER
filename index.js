@@ -97,6 +97,13 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
 	res.json({ status: true });
 });
+app.post("/api/test", async (req, res) => {
+    if (!req.body) {
+        res.status(403).json({status: "false"})
+    } else {
+        res.status(403).json({status: "true"})
+    }
+})
 app.post("/api/getToken", async (req, res) => {
 	try {
 		if (!req.body) {
