@@ -143,7 +143,7 @@ app.post("/api/deposit", async (req, res) => {
 			} else {
 				return res.status(404);
 			}
-		}, 10000);
+		}, 20000);
 	} catch (error) {
 		console.log("Error: ", error);
 		res.json(403);
