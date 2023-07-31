@@ -130,20 +130,18 @@ app.post("/api/deposit", async (req, res) => {
 		if (!data.id || !data.txhash || !data.amount | !data.idDeposit) {
 			res.status(403);
 		}
-		setTimeout(async () => {
-			const _tx = await provider.waitForTransaction(txhash);
-			if (_tx.status == 1) {
-				try {
-					await deposit(id, amount);
-					await confirmDeposit(idDeposit);
-					res.json({ status: true });
-				} catch (error) {
-					return res.status(404);
-				}
-			} else {
+		const _tx = await provider.waitForTransaction(txhash);
+		if (_tx.status == 1) {
+			try {
+				await deposit(id, amount);
+				await confirmDeposit(idDeposit);
+				res.json({ status: true });
+			} catch (error) {
 				return res.status(404);
 			}
-		}, 20000);
+		} else {
+			return res.status(404);
+		}
 	} catch (error) {
 		console.log("Error: ", error);
 		res.json(403);
