@@ -101,18 +101,18 @@ app.post("/api/test", async (req, res) => {
     if (!req.body) {
         res.status(403).json({status: "false"})
     } else {
-        res.status(403).json({status: "true"})
+        res.status(200).json({status: "true"})
     }
 })
 app.post("/api/getToken", async (req, res) => {
 	try {
 		if (!req.body) {
-			return res.status(403);
+			res.status(403);
 		}
 		token = jwt.sign(req.body, process.env.JWT_SECRET);
 		res.json({ token: token });
 	} catch (error) {
-		return res.status(403);
+		res.status(403);
 	}
 });
 

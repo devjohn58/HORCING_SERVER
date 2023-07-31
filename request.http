@@ -1,4 +1,4 @@
-POST https://horcing-server.vercel.app/
+POST https://horcing-server.vercel.app/api/getToken
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
@@ -8,10 +8,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 }
 ###
 
-POST https://horcing-server.vercel.app/api/getToken
-content-type: application/json
-
-{
-    "name": "ewaf",
-    "aa": 1
-}
+POST https://horcing-server.vercel.app/api/test
