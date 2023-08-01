@@ -9,11 +9,12 @@ require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-// const provider = new ethers.JsonRpcProvider(
-//     "https://cloudflare-eth.com"
 const provider = new ethers.JsonRpcProvider(
-	"https://ethereum-goerli.publicnode.com"
-);
+    "https://cloudflare-eth.com"
+    );
+// const provider = new ethers.JsonRpcProvider(
+// 	"https://ethereum-goerli.publicnode.com"
+// );
 
 //============FIREBASE CONFIG=================
 
